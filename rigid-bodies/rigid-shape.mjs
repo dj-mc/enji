@@ -16,7 +16,7 @@ class RigidShape {
   update_gravity() {
     // Canvas origin (0,0) starts at top left-hand corner, so as y becomes more
     // positive, the cavas is traced downward along the y-axis
-    if (this.center.y < core.height && this.fixed === false) {
+    if (this.center.y < core.height && this.is_fixed === false) {
       this.move_towards(new Vector2d(0, 1));
     }
   }
