@@ -10,6 +10,3 @@ window.onload = () => {
   core.init_engine();
   load_scene();
 };
-
-// TODO:
-// Maintain performant framerate

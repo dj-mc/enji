@@ -34,62 +34,52 @@ const key_down_e = function (e, ecore) {
       break;
 
     // Movement
-
     case 'KeyW':
       ecore.current_obj.move_towards(new Vector2d(0, -10));
       break;
-
     case 'KeyA':
       ecore.current_obj.move_towards(new Vector2d(-10, 0));
       break;
-
     case 'KeyS':
       ecore.current_obj.move_towards(new Vector2d(0, 10));
       break;
-
     case 'KeyD':
       ecore.current_obj.move_towards(new Vector2d(10, 0));
       break;
 
     // Rotation
-
     case 'KeyQ':
       ecore.current_obj.rotate_shape(-0.1);
       break;
-
     case 'KeyE':
       ecore.current_obj.rotate_shape(0.1);
       break;
 
-    case 'KeyH':
-      // Toggle fixture (gravity) of selected
-      ecore.current_obj.fixed = ecore.current_obj.fixed === true ? false : true;
-      break;
-
-    // Reset scene, delete obj
-
+    // Reset
     case 'KeyR':
       load_scene();
       break;
-
+    // Delete
     case 'KeyT':
       ecore.delete_obj(ecore.obj_idx);
+    // Toggle fixture (gravity) of selected object
+    case 'KeyH':
+      ecore.current_obj.is_fixed = ecore.current_obj.is_fixed === true ? false : true;
+      break;
 
+    // Selection
     case 'ArrowUp':
       console.log('Pressed ArrowUp');
       ecore.set_obj_idx(ecore.obj_idx + 1);
       break;
-
     case 'ArrowDown':
       console.log('Pressed ArrowDown');
       ecore.set_obj_idx(ecore.obj_idx - 1);
       break;
-
     case 'ArrowLeft':
       console.log('Pressed ArrowLeft');
       ecore.set_obj_idx(0);
       break;
-
     case 'ArrowRight':
       console.log('Pressed ArrowRight');
       ecore.set_obj_idx(ecore.objs_len - 1);

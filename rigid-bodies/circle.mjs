@@ -2,12 +2,12 @@ import RigidShape from './rigid-shape.mjs';
 import Vector2d from '../lib/vector2d.mjs';
 
 class Circle extends RigidShape {
-  constructor(center = new Vector2d(0, 0), radius = 1, fixed = true) {
+  constructor(center = new Vector2d(0, 0), radius = 1, is_fixed = true) {
     super(center);
     this.shape = 'RigidShape :: Circle';
     this.radius = radius;
     this.startPoint = new Vector2d(center.x, center.y - radius);
-    this.fixed = fixed;
+    this.is_fixed = is_fixed;
   }
 
   draw_shape(ctx) {
