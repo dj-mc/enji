@@ -1,6 +1,9 @@
-# 2d-phys-engi
+# enji
 
 A small 2D physics engine using canvas.  
-This project is a port of `Building a 2D Game Physics Engine` (2017)  
-Authors: Michael Tanaya, Huaming Chen, Jebediah Pavleas, Kelvin Sung.  
-And taking inspirations from: [matter-js](https://github.com/liabru/matter-js) & [planck.js](https://github.com/shakiba/planck.js/)
+
+## References
+
+[matter-js](https://github.com/liabru/matter-js) & [planck.js](https://github.com/shakiba/planck.js/)  
+[Building a 2D Game Physics Engine](https://link.springer.com/book/10.1007/978-1-4842-2583-7)  
+[Adam Ranfelt](https://developer.ibm.com/tutorials/wa-build2dphysicsengine/)'s guide on IBM  
