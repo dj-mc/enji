@@ -1,11 +1,11 @@
 {
   "env": {
-    "browser": true,
-    "es2021": true
+    "browser": true
   },
   "extends": ["prettier"],
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": "latest"
   },
   "rules": {
     "no-undef": 2,
