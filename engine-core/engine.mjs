@@ -23,7 +23,7 @@ class Engine {
 
     // Track time
     this.current_time = null;
-    this.elasped_time = null;
+    this.elapsed_time = null;
     this.previous_time = Date.now();
   }
 
@@ -47,7 +47,7 @@ class Engine {
         throw new Error(`${idx} isn't between 0 and ${this.objs_len - 1}`);
       }
     } catch (err) {
-      console.error('Uknown error!', err);
+      console.error('Unknown error!', err);
     }
   }
 
@@ -101,9 +101,9 @@ class Engine {
     });
     // Calculate lag_time
     this.current_time = Date.now();
-    this.elasped_time = this.current_time - this.previous_time;
+    this.elapsed_time = this.current_time - this.previous_time;
     this.previous_time = this.current_time;
-    this.lag_time += this.elasped_time;
+    this.lag_time += this.elapsed_time;
     // Ensure update frequency matches fps
     while (this.lag_time >= this.ms_per_frame) {
       this.lag_time -= this.ms_per_frame;

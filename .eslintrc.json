@@ -1,5 +1,6 @@
 {
   "env": {
+    "es6": true,
     "browser": true
   },
   "extends": ["prettier"],
@@ -7,7 +8,11 @@
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
+  "plugins": ["prettier"],
   "rules": {
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
+    "prettier/prettier": "error",
     "no-undef": 2,
     "no-unused-vars": 2,
     "no-use-before-define": 2,
