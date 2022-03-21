@@ -1,5 +1,14 @@
 # enji
 
+Optimizations
+
+- broad phase collision optimization
+- resolve collision interpenetration
+- (efficient) positional correction resolution
+- utilize separating axis theorem (SAT)
+- bounding circle (broad phase) collision method
+- narrow phase (SAT) algorithm
+
 A small 2D physics engine using canvas.  
 
 ## References
