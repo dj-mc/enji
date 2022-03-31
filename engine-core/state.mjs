@@ -23,7 +23,7 @@ class State {
         this.obj_idx = idx;
         return;
       } else {
-        throw new Error(`${idx} isn't between 0 and ${this.objs_len - 1}`);
+        throw Error(`${idx} isn't between 0 and ${this.objs_len - 1}`);
       }
     } catch (err) {
       console.error('Unknown error!', err);
@@ -36,9 +36,9 @@ class State {
 
   delete_obj(idx) {
     if (this.collection[idx]) {
-      let new_col = this.collection.slice();
-      new_col.splice(idx, 1);
-      this.collection = new_col.slice();
+      let new_collection = this.collection.slice();
+      new_collection.splice(idx, 1);
+      this.collection = new_collection.slice();
       if (0 <= this.obj_idx - 1) this.obj_idx = this.obj_idx - 1;
     }
   }
