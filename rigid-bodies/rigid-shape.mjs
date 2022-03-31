@@ -1,6 +1,6 @@
 import Vector2d from '../lib/vector2d.mjs';
 import CurrentState from '../engine-core/state.mjs';
-import core_options from '../engine-core/co.mjs';
+import core_options from '../engine-core/options.mjs';
 
 class RigidShape {
   constructor(center = new Vector2d(0, 0)) {

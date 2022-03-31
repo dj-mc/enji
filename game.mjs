@@ -1,5 +1,5 @@
 import core from './engine-core/core.mjs';
-import core_options from './engine-core/co.mjs';
+import core_options from './engine-core/options.mjs';
 import CurrentState from './engine-core/state.mjs';
 import Rectangle from './rigid-bodies/rectangle.mjs';
 import Vector2d from './lib/vector2d.mjs';
