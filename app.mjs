@@ -3,7 +3,7 @@ import key_down_e from './controller.mjs';
 import load_scene from './game.mjs';
 
 document.addEventListener('keydown', (e) => {
-  key_down_e(e, core);
+  key_down_e(e);
 });
 
 window.onload = () => {

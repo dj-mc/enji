@@ -1,5 +1,6 @@
-import core from '../engine-core/core.mjs';
 import Vector2d from '../lib/vector2d.mjs';
+import CurrentState from '../engine-core/state.mjs';
+import core_options from '../engine-core/co.mjs';
 
 class RigidShape {
   constructor(center = new Vector2d(0, 0)) {
@@ -10,13 +11,13 @@ class RigidShape {
   init_shape() {
     // This could be bad. Better solution: call this automatically during
     // construction time?
-    core.append_obj(this);
+    CurrentState.append_obj(this);
   }
 
   update_gravity() {
     // Canvas origin (0,0) starts at top left-hand corner, so as y becomes more
     // positive, the canvas is traced downward along the y-axis
-    if (this.center.y < core.height && this.is_fixed === false) {
+    if (this.center.y < core_options.height && this.is_fixed === false) {
       this.move_towards(new Vector2d(0, 1));
     }
   }

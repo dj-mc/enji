@@ -1,20 +1,16 @@
 import core from './engine-core/core.mjs';
-import { core_options } from './engine-core/core.mjs';
+import core_options from './engine-core/co.mjs';
+import CurrentState from './engine-core/state.mjs';
 import Rectangle from './rigid-bodies/rectangle.mjs';
 import Vector2d from './lib/vector2d.mjs';
 
-// Design choices:
-// Load the scene as an array of RigidShapes in core as core_options.
-// Load the scene manually like so, the challenge being as to how the controller
-// would reset the scene to its original state.
-// Collection class?
-
 function load_core_options() {
-  core.clear_collection();
-  core.collection = core_options.collection.slice();
   core.width = core_options.width;
   core.height = core_options.height;
-  core.obj_idx = core_options.obj_idx;
+
+  CurrentState.clear_collection();
+  CurrentState.collection = core_options.collection.slice();
+  CurrentState.obj_idx = core_options.obj_idx;
 }
 
 function load_borders() {
