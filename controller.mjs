@@ -9,6 +9,7 @@ const key_down_e = function (e) {
   let keyWhich = e.which;
 
   switch (keyCode) {
+    // Shapes
     case 'KeyF':
       console.log('Pressed F');
       let r = new Rectangle(
@@ -18,7 +19,6 @@ const key_down_e = function (e) {
       );
       r.init_shape();
       break;
-
     case 'KeyG':
       console.log('Pressed G');
       let c = new Circle(
@@ -54,9 +54,12 @@ const key_down_e = function (e) {
     case 'KeyR':
       load_scene();
       break;
+
     // Delete
     case 'KeyT':
       CurrentState.delete_obj(CurrentState.obj_idx);
+      break;
+
     // Toggle fixture (gravity) of selected object
     case 'KeyH':
       CurrentState.current_obj.is_fixed = CurrentState.current_obj.is_fixed === true ? false : true;

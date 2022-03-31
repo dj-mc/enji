@@ -26,7 +26,7 @@ class State {
         throw Error(`${idx} isn't between 0 and ${this.objs_len - 1}`);
       }
     } catch (err) {
-      console.error('Unknown error!', err);
+      console.error(err);
     }
   }
 
