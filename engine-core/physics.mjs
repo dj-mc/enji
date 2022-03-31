@@ -1,14 +1,17 @@
-import core from './core.mjs';
+import CurrentState from './state.mjs';
 
 class Physics {
-  constructor() {}
+  constructor() {
+    this.canvas = document.getElementById('canvas');
+    this.context = this.canvas.getContext('2d');
+  }
   collision() {
-    for (let i = 5; i < core.objs_len; i++) {
-      for (let j = i + 1; j < core.objs_len; j++) {
-        if (core.collection[i].bound_test(core.collection[j])) {
-          core.context.strokeStyle = 'green';
-          core.collection[i].draw_shape(core.context);
-          core.collection[j].draw_shape(core.context);
+    for (let i = 5; i < CurrentState.objs_len; i++) {
+      for (let j = i + 1; j < CurrentState.objs_len; j++) {
+        if (CurrentState.collection[i].bound_test(CurrentState.collection[j])) {
+          this.context.strokeStyle = 'green';
+          CurrentState.collection[i].draw_shape(this.context);
+          CurrentState.collection[j].draw_shape(this.context);
         }
       }
     }

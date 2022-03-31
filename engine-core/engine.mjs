@@ -1,3 +1,5 @@
+import CurrentState from './state.mjs';
+
 class Engine {
   constructor(options) {
     // Canvas size
@@ -11,9 +13,9 @@ class Engine {
     this.canvas.height = this.height;
 
     // Object persistence
-    this.collection = options.collection.slice();
+    CurrentState.collection = options.collection.slice();
     // Index of current object selected
-    this.obj_idx = options.obj_idx;
+    CurrentState.obj_idx = options.obj_idx;
 
     // Frame/sec
     this.lag_time = 0;
@@ -27,71 +29,31 @@ class Engine {
     this.previous_time = Date.now();
   }
 
-  get objs_len() {
-    return this.collection.length;
-  }
-
-  get current_obj() {
-    return this.collection[this.obj_idx];
-  }
-
-  set_obj_idx(idx = 0) {
-    try {
-      if (this.objs_len === 0) {
-        this.obj_idx = 0;
-        return;
-      } else if (0 <= idx && idx <= this.objs_len - 1) {
-        this.obj_idx = idx;
-        return;
-      } else {
-        throw new Error(`${idx} isn't between 0 and ${this.objs_len - 1}`);
-      }
-    } catch (err) {
-      console.error('Unknown error!', err);
-    }
-  }
-
-  append_obj(obj) {
-    this.collection.push(obj);
-  }
-
-  delete_obj(idx) {
-    if (this.collection[idx]) {
-      let new_col = this.collection.slice();
-      new_col.splice(idx, 1);
-      this.collection = new_col.slice();
-      if (0 <= this.obj_idx - 1) this.obj_idx = this.obj_idx - 1;
-    }
-  }
-
-  clear_collection() {
-    this.collection = [];
-  }
-
   draw_collection() {
     this.context.clearRect(0, 0, this.width, this.height);
-    for (let i = 0; i < this.objs_len; i++) {
-      this.context.strokeStyle = this.obj_idx === i ? 'red' : 'blue';
-      this.collection[i].draw_shape(this.context);
+    for (let i = 0; i < CurrentState.objs_len; i++) {
+      this.context.strokeStyle = CurrentState.obj_idx === i ? 'red' : 'blue';
+      CurrentState.collection[i].draw_shape(this.context);
     }
   }
 
   echo_collection() {
+    const i = CurrentState.obj_idx;
     const ui = document.querySelector('#echo');
-    if (0 < this.objs_len) {
+    if (0 < CurrentState.objs_len) {
       ui.textContent = `
-      \r\nobj_idx: ${this.obj_idx}
-      \r\ntype: ${this.collection[this.obj_idx].shape}
-      \r\nx: ${this.collection[this.obj_idx].center.x.toPrecision(3)}
-      \r\ny: ${this.collection[this.obj_idx].center.y.toPrecision(3)}
-      \r\nangle: ${this.collection[this.obj_idx].angle.toPrecision(3)}
-      `;
-    } else if (0 === this.objs_len) ui.textContent = 'No objects';
+            \r\nobj_idx: ${i}
+            \r\ntype: ${CurrentState.collection[i].shape}
+            \r\nx: ${CurrentState.collection[i].center.x.toPrecision(3)}
+            \r\ny: ${CurrentState.collection[i].center.y.toPrecision(3)}
+            \r\nangle: ${CurrentState.collection[i].angle.toPrecision(3)}
+            `;
+    } else if (0 === CurrentState.objs_len) ui.textContent = 'No objects';
   }
 
   update_collection_ctx() {
-    for (let i = 0; i < this.objs_len; i++) {
-      this.collection[i].update_gravity(this.context);
+    for (let i = 0; i < CurrentState.objs_len; i++) {
+      CurrentState.collection[i].update_gravity(this.context);
     }
   }
 
