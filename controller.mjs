@@ -11,7 +11,6 @@ const key_down_e = function (e) {
   switch (keyCode) {
     // Shapes
     case 'KeyF':
-      console.log('Pressed F');
       let r = new Rectangle(
         new Vector2d(CurrentState.current_obj.center.x, CurrentState.current_obj.center.y),
         Math.random() * 30 + 10,
@@ -20,7 +19,6 @@ const key_down_e = function (e) {
       r.init_shape();
       break;
     case 'KeyG':
-      console.log('Pressed G');
       let c = new Circle(
         new Vector2d(CurrentState.current_obj.center.x, CurrentState.current_obj.center.y),
         Math.random() * 10 + 20
@@ -67,19 +65,15 @@ const key_down_e = function (e) {
 
     // Selection
     case 'ArrowUp':
-      console.log('Pressed ArrowUp');
       CurrentState.set_obj_idx(CurrentState.obj_idx + 1);
       break;
     case 'ArrowDown':
-      console.log('Pressed ArrowDown');
       CurrentState.set_obj_idx(CurrentState.obj_idx - 1);
       break;
     case 'ArrowLeft':
-      console.log('Pressed ArrowLeft');
       CurrentState.set_obj_idx(0);
       break;
     case 'ArrowRight':
-      console.log('Pressed ArrowRight');
       CurrentState.set_obj_idx(CurrentState.objs_len - 1);
       break;
   }
@@ -87,7 +81,6 @@ const key_down_e = function (e) {
   // Number keys 0 to 9
   if (keyWhich >= 48 && keyWhich <= 57) {
     let minus48 = keyWhich - 48;
-    console.log(`Pressed ${minus48}`);
     if (minus48 < CurrentState.objs_len) {
       CurrentState.set_obj_idx(minus48);
     }
