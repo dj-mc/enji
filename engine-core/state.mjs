@@ -1,9 +1,11 @@
+import core_options from './options.mjs';
+
 class State {
   constructor() {
-    // Object persistence
-    this.collection = [];
-    // Index of current object selected
-    this.obj_idx = 0;
+    this.canvas = document.getElementById('canvas');
+    this.context = this.canvas.getContext('2d');
+    this.collection = []; // Transition to local storage
+    this.obj_idx = 0; // Index of current object selected in UI
   }
 
   get objs_len() {
@@ -45,6 +47,34 @@ class State {
 
   clear_collection() {
     this.collection = [];
+  }
+
+  draw_collection() {
+    this.context.clearRect(0, 0, core_options.width, core_options.height);
+    for (let i = 0; i < this.objs_len; i++) {
+      this.context.strokeStyle = this.obj_idx === i ? 'red' : 'blue';
+      this.collection[i].draw_shape(this.context);
+    }
+  }
+
+  echo_collection() {
+    const i = this.obj_idx;
+    const ui = document.querySelector('#echo');
+    if (0 < this.objs_len) {
+      ui.textContent = `
+            \r\nobj_idx: ${i}
+            \r\ntype: ${this.collection[i].shape}
+            \r\nx: ${this.collection[i].center.x.toPrecision(3)}
+            \r\ny: ${this.collection[i].center.y.toPrecision(3)}
+            \r\nangle: ${this.collection[i].angle.toPrecision(3)}
+            `;
+    } else if (0 === this.objs_len) ui.textContent = 'No objects';
+  }
+
+  update_collection_ctx() {
+    for (let i = 0; i < this.objs_len; i++) {
+      this.collection[i].update_gravity(this.context);
+    }
   }
 }
 

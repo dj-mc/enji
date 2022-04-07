@@ -29,34 +29,6 @@ class Engine {
     this.previous_time = Date.now();
   }
 
-  draw_collection() {
-    this.context.clearRect(0, 0, this.width, this.height);
-    for (let i = 0; i < CurrentState.objs_len; i++) {
-      this.context.strokeStyle = CurrentState.obj_idx === i ? 'red' : 'blue';
-      CurrentState.collection[i].draw_shape(this.context);
-    }
-  }
-
-  echo_collection() {
-    const i = CurrentState.obj_idx;
-    const ui = document.querySelector('#echo');
-    if (0 < CurrentState.objs_len) {
-      ui.textContent = `
-            \r\nobj_idx: ${i}
-            \r\ntype: ${CurrentState.collection[i].shape}
-            \r\nx: ${CurrentState.collection[i].center.x.toPrecision(3)}
-            \r\ny: ${CurrentState.collection[i].center.y.toPrecision(3)}
-            \r\nangle: ${CurrentState.collection[i].angle.toPrecision(3)}
-            `;
-    } else if (0 === CurrentState.objs_len) ui.textContent = 'No objects';
-  }
-
-  update_collection_ctx() {
-    for (let i = 0; i < CurrentState.objs_len; i++) {
-      CurrentState.collection[i].update_gravity(this.context);
-    }
-  }
-
   run_engine_cycle() {
     requestAnimationFrame(() => {
       this.run_engine_cycle(); // Game loop
@@ -69,10 +41,10 @@ class Engine {
     // Ensure update frequency matches fps
     while (this.lag_time >= this.ms_per_frame) {
       this.lag_time -= this.ms_per_frame;
-      this.update_collection_ctx();
+      CurrentState.update_collection_ctx();
     }
-    this.draw_collection();
-    this.echo_collection();
+    CurrentState.draw_collection();
+    CurrentState.echo_collection();
   }
 
   init_engine() {
