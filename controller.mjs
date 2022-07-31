@@ -58,11 +58,6 @@ const key_down_e = function (e) {
       CurrentState.delete_obj(CurrentState.obj_idx);
       break;
 
-    // Toggle fixture (gravity) of selected object
-    case 'KeyH':
-      CurrentState.current_obj.is_fixed = CurrentState.current_obj.is_fixed === true ? false : true;
-      break;
-
     // Selection
     case 'ArrowUp':
       CurrentState.set_obj_idx(CurrentState.obj_idx + 1);
@@ -85,8 +80,6 @@ const key_down_e = function (e) {
       CurrentState.set_obj_idx(minus48);
     }
   }
-
-  console.log(CurrentState.objs_len);
 };
 
 export default key_down_e;

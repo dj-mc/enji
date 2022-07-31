@@ -2,12 +2,12 @@ import RigidShape from './rigid-shape.mjs';
 import Vector2d from '../lib/vector2d.mjs';
 
 class Rectangle extends RigidShape {
-  constructor(center = new Vector2d(0, 0), width = 1, height = 1, is_fixed = true) {
+  constructor(center = new Vector2d(0, 0), width = 1, height = 1) {
     super(center);
     this.shape = 'RigidShape :: Rectangle';
     this.width = width;
     this.height = height;
-    this.is_fixed = is_fixed;
+    this.bound_radius = Math.sqrt(width * width + height * height) / 2;
     this.vertices = [];
     this.normals = [];
 

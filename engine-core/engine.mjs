@@ -1,3 +1,4 @@
+import { phys } from './physics.mjs';
 import CurrentState from './state.mjs';
 
 class Engine {
@@ -38,13 +39,16 @@ class Engine {
     this.elapsed_time = this.current_time - this.previous_time;
     this.previous_time = this.current_time;
     this.lag_time += this.elapsed_time;
+
+    CurrentState.draw_collection();
+    CurrentState.echo_collection();
+
     // Ensure update frequency matches fps
     while (this.lag_time >= this.ms_per_frame) {
       this.lag_time -= this.ms_per_frame;
+      phys.collision();
       CurrentState.update_collection_ctx();
     }
-    CurrentState.draw_collection();
-    CurrentState.echo_collection();
   }
 
   init_engine() {
