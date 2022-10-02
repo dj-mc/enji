@@ -1,4 +1,4 @@
-import { phys } from './physics.mjs';
+import Physics from './physics.mjs';
 import CurrentState from './state.mjs';
 
 class Engine {
@@ -46,7 +46,7 @@ class Engine {
     // Ensure update frequency matches fps
     while (this.lag_time >= this.ms_per_frame) {
       this.lag_time -= this.ms_per_frame;
-      phys.collision();
+      Physics.collision();
       CurrentState.update_collection_ctx();
     }
   }

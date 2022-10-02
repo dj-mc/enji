@@ -4,7 +4,7 @@ class State {
   constructor() {
     this.canvas = document.getElementById('canvas');
     this.context = this.canvas.getContext('2d');
-    this.collection = []; // Transition to local storage
+    this.collection = [];
     this.obj_idx = 0; // Index of current object selected in UI
   }
 
@@ -17,18 +17,14 @@ class State {
   }
 
   set_obj_idx(idx = 0) {
-    try {
-      if (this.objs_len === 0) {
-        this.obj_idx = 0;
-        return;
-      } else if (0 <= idx && idx <= this.objs_len - 1) {
-        this.obj_idx = idx;
-        return;
-      } else {
-        throw Error(`${idx} isn't between 0 and ${this.objs_len - 1}`);
-      }
-    } catch (err) {
-      console.error(err);
+    if (this.objs_len === 0) {
+      this.obj_idx = 0;
+      return;
+    } else if (0 <= idx && idx <= this.objs_len - 1) {
+      this.obj_idx = idx;
+      return;
+    } else {
+      return;
     }
   }
 
