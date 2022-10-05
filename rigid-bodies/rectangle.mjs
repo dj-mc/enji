@@ -57,6 +57,16 @@ class Rectangle extends RigidShape {
     this.center = this.center.add(vect);
     return this;
   }
+
+  collision_test(other_shape, collision_info) {
+    let status = false;
+    if (other_shape.shape === 'RigidShape :: Rectangle') {
+      status = false;
+    } else {
+      status = false;
+    }
+    return status;
+  }
 }
 
 export default Rectangle;
