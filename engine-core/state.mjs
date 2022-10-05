@@ -68,9 +68,9 @@ class State {
   }
 
   update_collection_ctx() {
-    for (let i = 0; i < this.objs_len; i++) {
-      this.collection[i].update_gravity(this.context);
-    }
+    // for (let i = 0; i < this.objs_len; i++) {
+    //   this.collection[i].update_gravity(this.context);
+    // }
   }
 }
 

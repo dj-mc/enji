@@ -8,8 +8,8 @@ class Engine {
     this.height = options.height;
 
     // Grab canvas and set it up
-    this.canvas = document.getElementById('canvas');
-    this.context = this.canvas.getContext('2d');
+    this.canvas = CurrentState.canvas;
+    this.context = CurrentState.context;
     this.canvas.width = this.width;
     this.canvas.height = this.height;
 
